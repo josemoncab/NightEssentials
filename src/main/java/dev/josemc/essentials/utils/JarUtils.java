@@ -16,6 +16,12 @@ import java.util.jar.JarFile;
  * */
 public final class JarUtils {
 
+    /**
+     * Utility class
+     * */
+    private JarUtils() {
+        throw new UnsupportedOperationException("Utility Class");
+    }
     private static Essentials instance = Essentials.get();
 
     /**
@@ -31,7 +37,7 @@ public final class JarUtils {
             Enumeration<JarEntry> entries = new JarFile(JarUtils.class.getProtectionDomain().getCodeSource().getLocation().getFile()).entries();
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
-                if (entry.getName().endsWith(filter)) {
+                if (entry.getName().endsWith(filter) && !entry.getName().equals("plugin.yml")) {
                     list.add(entry.getName());
                 }
             }

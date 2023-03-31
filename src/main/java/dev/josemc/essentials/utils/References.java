@@ -1,4 +1,6 @@
-package dev.josemc.essentials;
+package dev.josemc.essentials.utils;
+
+import dev.josemc.essentials.Essentials;
 
 import java.nio.file.Path;
 
@@ -28,4 +30,9 @@ public final class References {
      * Path of the languages folder
      * */
     public static final Path LANG_FOLDER = Path.of(pluginFolder, "lang/");
+
+    /**
+     * Path of the playerdata folder
+     * */
+    public static final Path PLAYERDATA_FOLDER = Path.of(pluginFolder, "playerdata/");
 }
