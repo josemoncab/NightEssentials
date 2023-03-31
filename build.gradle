@@ -1,0 +1,41 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+}
+
+group 'dev.josemc.essentials'
+version pluginVersion
+
+repositories {
+    mavenCentral()
+
+    // PaperMC Repo
+    maven { url = "https://repo.papermc.io/repository/maven-public/" }
+}
+
+dependencies {
+    // PaperMC
+    compileOnly("io.papermc.paper:paper-api:${mcVersion}-${paperApi}")
+
+    // SpongeForge Configurate
+    implementation("org.spongepowered:configurate-hocon:${configurateVersion}")
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: pluginVersion]
+    }
+}
+
+task testJar(type: Copy) {
+    dependsOn(':clean')
+    from shadowJar
+    into(project.file("./TestServer/plugins"))
+}
