@@ -1,5 +1,6 @@
-package dev.josemc.essentials.configurations.category;
+package dev.josemc.essentials.configurations.category.settings;
 
+import dev.josemc.essentials.configurations.category.ConfigCategory;
 import org.spongepowered.configurate.objectmapping.ConfigSerializable;
 import org.spongepowered.configurate.objectmapping.meta.Setting;
 

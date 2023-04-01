@@ -11,11 +11,11 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 
 public class Settings {
-    private HoconConfigurationLoader loader;
+    private final HoconConfigurationLoader loader;
 
     private CommentedConfigurationNode root;
 
-    private ObjectMapper<SettingsData> configMapper;
+    private final ObjectMapper<SettingsData> configMapper;
 
     private SettingsData data;
 
@@ -39,9 +39,9 @@ public class Settings {
     }
 
     public void save() {
-        (Essentials.get()).executor.execute(() -> {
+        Essentials.get().executor.execute(() -> {
             try {
-                this.configMapper.save(this.data, this.root.node(new Object[] { "Essentials" }));
+                this.configMapper.save(this.data, this.root);
                 this.loader.save(this.root);
             } catch (IOException e) {
                 Essentials.get().getLogger().log(Level.SEVERE, "Failed to save configuration", e);
@@ -52,7 +52,7 @@ public class Settings {
     public boolean reload() {
         try {
             this.root = this.loader.load();
-            this.data = this.configMapper.load(this.root.node("Essentials"));
+            this.data = this.configMapper.load(this.root);
         } catch (Exception e) {
             Essentials.get().getLogger().log(Level.SEVERE, "Failed to load configuration", e);
             return false;
