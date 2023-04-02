@@ -13,6 +13,9 @@ repositories {
 
     // PaperMC Repo
     maven { url = "https://repo.papermc.io/repository/maven-public/" }
+
+    // JitPack
+    maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
@@ -21,10 +24,19 @@ dependencies {
 
     // SpongeForge Configurate
     implementation("org.spongepowered:configurate-hocon:${configurateVersion}")
+
+    // Lamp Command Framework
+    implementation("com.github.Revxrsal.Lamp:common:${lampVersion}")
+    implementation("com.github.Revxrsal.Lamp:bukkit:${lampVersion}")
 }
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
 }
 
 processResources {
@@ -32,6 +44,13 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         filter ReplaceTokens, tokens: [version: pluginVersion]
     }
+}
+
+shadowJar {
+    relocate("org.spongepowered.configurate", "dev.josemc.essentials.lib.configurate")
+    relocate("com.typesafe", "dev.josemc.essentials.lib.typesafe")
+    relocate("io.leangen.geantyref", "dev.josemc.essentials.lib.geantyref")
+    relocate("revxrsal.commands", "dev.josemc.essentials.lib.commands")
 }
 
 task testJar(type: Copy) {
