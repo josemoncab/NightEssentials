@@ -24,7 +24,7 @@ public final class References {
     /**
      * Path of the main config file
      * */
-    public static final Path CONFIG_FILE = Path.of(pluginFolder, "settings.conf");
+    public static final Path CONFIG_FILE = Path.of(pluginFolder, "settings.yml");
 
     /**
      * Path of the languages folder

@@ -22,8 +22,8 @@ dependencies {
     // PaperMC
     compileOnly("io.papermc.paper:paper-api:${mcVersion}-${paperApi}")
 
-    // SpongeForge Configurate
-    implementation("org.spongepowered:configurate-hocon:${configurateVersion}")
+    // Boosted YAML
+    implementation("dev.dejvokep:boosted-yaml:${boostedYamlVersion}")
 
     // Lamp Command Framework
     implementation("com.github.Revxrsal.Lamp:common:${lampVersion}")
@@ -44,6 +44,10 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         filter ReplaceTokens, tokens: [version: pluginVersion]
     }
+}
+
+jar {
+    archiveBaseName("NightEssentials")
 }
 
 shadowJar {

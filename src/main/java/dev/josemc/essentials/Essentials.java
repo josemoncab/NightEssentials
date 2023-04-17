@@ -1,10 +1,7 @@
 package dev.josemc.essentials;
 
-import dev.josemc.essentials.configurations.ConfigurationsManager;
+import dev.josemc.essentials.files.ConfigurationManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.spongepowered.configurate.objectmapping.ObjectMapper;
-import org.spongepowered.configurate.objectmapping.meta.NodeResolver;
-import org.spongepowered.configurate.util.NamingSchemes;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -16,15 +13,7 @@ public class Essentials extends JavaPlugin {
      * */
     private static Essentials instance;
 
-    /**
-     * Instance of ConfigurationsManager
-     * */
-    private static ConfigurationsManager configurationsManager;
-
-    /**
-     * Global ObjectMapper for all files
-     * */
-    public static ObjectMapper.Factory OBJECTMAPPER_FACTORY = ObjectMapper.factoryBuilder().defaultNamingScheme(NamingSchemes.PASSTHROUGH).addNodeResolver(NodeResolver.onlyWithSetting()).build();
+    private static ConfigurationManager cm;
 
     public Executor executor;
     @Override
@@ -32,14 +21,14 @@ public class Essentials extends JavaPlugin {
         instance = this;
         executor = Executors.newSingleThreadExecutor();
 
-        configurationsManager = new ConfigurationsManager();
+        cm = new ConfigurationManager();
     }
 
     public static Essentials get() {
         return instance;
     }
 
-    public static ConfigurationsManager cm() {
-        return configurationsManager;
+    public static ConfigurationManager getCm() {
+        return cm;
     }
 }
