@@ -22,7 +22,7 @@ dependencies {
     // PaperMC
     compileOnly("io.papermc.paper:paper-api:${mcVersion}-${paperApi}")
 
-    // Boosted YAML
+    // BoostedYaml
     implementation("dev.dejvokep:boosted-yaml:${boostedYamlVersion}")
 
     // Lamp Command Framework
@@ -44,10 +44,6 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         filter ReplaceTokens, tokens: [version: pluginVersion]
     }
-}
-
-jar {
-    archiveBaseName("NightEssentials")
 }
 
 shadowJar {

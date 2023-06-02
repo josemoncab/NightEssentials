@@ -13,22 +13,39 @@ public class Essentials extends JavaPlugin {
      * */
     private static Essentials instance;
 
-    private static ConfigurationManager cm;
+    /**
+     * Instance of ConfigurationsManager
+     * */
+    private static ConfigurationManager configurationsManager;
 
+    /**
+     * Queue used to execute heavy task like file handling
+     * */
     public Executor executor;
+
     @Override
     public void onEnable() {
         instance = this;
         executor = Executors.newSingleThreadExecutor();
 
-        cm = new ConfigurationManager();
+        configurationsManager = new ConfigurationManager();
     }
 
+    /**
+     * Get the instance of the plugin
+     *
+     * @return instance of the {@link Essentials}
+     * */
     public static Essentials get() {
         return instance;
     }
 
-    public static ConfigurationManager getCm() {
-        return cm;
+    /**
+     * Get the configuration manager instance
+     *
+     * @return instance of the {@link ConfigurationManager}
+     * */
+    public static ConfigurationManager cm() {
+        return configurationsManager;
     }
 }
