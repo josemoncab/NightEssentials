@@ -1,6 +1,9 @@
 package dev.josemc.essentials;
 
+import dev.josemc.essentials.data.DataManager;
 import dev.josemc.essentials.files.ConfigurationManager;
+import dev.josemc.essentials.listeners.JoinListener;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.concurrent.Executor;
@@ -19,6 +22,11 @@ public class Essentials extends JavaPlugin {
     private static ConfigurationManager configurationsManager;
 
     /**
+     * Instance of the DataManager
+     * */
+    private static DataManager dataManager;
+
+    /**
      * Queue used to execute heavy task like file handling
      * */
     public Executor executor;
@@ -29,6 +37,18 @@ public class Essentials extends JavaPlugin {
         executor = Executors.newSingleThreadExecutor();
 
         configurationsManager = new ConfigurationManager();
+        dataManager = new DataManager();
+
+        registerEvents();
+    }
+
+    @Override
+    public void onDisable() {
+        dm().clearCache();
+    }
+
+    private void registerEvents() {
+        Bukkit.getServer().getPluginManager().registerEvents(new JoinListener(), this);
     }
 
     /**
@@ -47,5 +67,14 @@ public class Essentials extends JavaPlugin {
      * */
     public static ConfigurationManager cm() {
         return configurationsManager;
+    }
+
+    /**
+     * Get the data manager instance
+     *
+     * @return instance of the {@link DataManager}
+     * */
+    public static DataManager dm() {
+        return dataManager;
     }
 }

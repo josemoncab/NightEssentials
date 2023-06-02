@@ -26,17 +26,12 @@ public class YAML {
     /**
      * Default settings used for the YAMLDocument creator
      * */
-    private final GeneralSettings generalSettings = GeneralSettings.builder().setKeyFormat(GeneralSettings.KeyFormat.OBJECT).build();
+    private final GeneralSettings generalSettings = GeneralSettings.builder().setKeyFormat(GeneralSettings.KeyFormat.OBJECT).setUseDefaults(true).build();
 
     /**
      * Default settings used for the YAMLDocument creator
      * */
-    private final LoaderSettings loaderSettings = LoaderSettings.builder().setAutoUpdate(true).build();
-
-    /**
-     * Default settings used for the YAMLDocument creator
-     * */
-    private final UpdaterSettings updaterSettings = UpdaterSettings.builder().setVersioning(new BasicVersioning("config-version")).build();
+    private final UpdaterSettings updaterSettings = UpdaterSettings.builder().setVersioning(new BasicVersioning("Config-Version")).build();
 
     /**
      * Create a YAML file with default content. Used for configuration files
@@ -67,7 +62,11 @@ public class YAML {
     private YAML(Path path, String internal, boolean autoUpdate) {
         Essentials.get().executor.execute(() -> {
             try {
-                document = YamlDocument.create(new File(path.toUri()), getClass().getResourceAsStream(internal), generalSettings, LoaderSettings.builder().setAutoUpdate(autoUpdate).build(), DumperSettings.DEFAULT, updaterSettings);
+                if (internal != null) {
+                    document = YamlDocument.create(new File(path.toUri()), YAML.class.getResourceAsStream("/" + internal), generalSettings, LoaderSettings.builder().setAutoUpdate(autoUpdate).build(), DumperSettings.DEFAULT, updaterSettings);
+                } else {
+                    document = YamlDocument.create(new File(path.toUri()), generalSettings, LoaderSettings.builder().setAutoUpdate(autoUpdate).build(), DumperSettings.DEFAULT, updaterSettings);
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
