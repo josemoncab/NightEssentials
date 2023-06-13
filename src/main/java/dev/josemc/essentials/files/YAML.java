@@ -92,6 +92,10 @@ public class YAML {
         return document.get(Route.fromString(path));
     }
 
+    public boolean contains(String path) {
+        return document.contains(path);
+    }
+
     /**
      * Save the file
      * */
