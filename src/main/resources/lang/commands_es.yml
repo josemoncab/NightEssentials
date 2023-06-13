@@ -8,30 +8,37 @@
 # <input/> -> Information introducida por el usuario
 Errors:
     # <argument/> -> Argumento al que le falta el valor
-    Missing-Argument: "<prefix/> <red>Debes especificar un valor para <yellow><argument/></yellow></red>"
+    Missing-Arguments: "<prefix/> <red>Debes especificar un valor para <yellow><argument/></yellow></red>"
     # <parameter/> ->
     Invalid-Enum: "<prefix/> <red>Invalido <yellow><parameter/></yellow>: <yellow><input/></yellow></red>"
     Invalid-Number: "<prefix/> <red>Se esperaba un numero, pero has usado <yellow><input/></yellow></red>"
     Invalid-UUID: "<prefix/> <red>UUID invalida: <yellow><input/></yellow></red>"
+    Invalid-URL: "<prefix/> <red>URL invalida: <yellow><input/></yellow></red>"
+    Invalid-Boolean: "<prefix/> <red>Se esperaba true o false, pero has usado: <yellow><input/></yellow></red>"
+    Invalid-String: "<prefix/> <red>Cadena de texto invalida. Asegurate de usar bien las \"</red>"
+    Invalid-Command: "<prefix/> <red>Comando invalido: <yellow><input/></yellow></red>"
+    Invalid-Subcommand: "<prefix/> <red>Subcomando invalido: <yellow><input/></yellow></red>"
+    Invalid-Player: "<prefix/> <red>Jugador invalido: <yellow><input/></yellow></red>"
+    Invalid-World: "<prefix/> <red>Mundo invalido: <yellow><input/></yellow></red>"
+    Invalid-Selector: "<prefix/> <red>Selector invalido: <yellow><input/></yellow></red>"
+    # <page/> -> Numero de pagina introducido por el usuario
+    # <page-count/> -> Numero de paginas totales
+    Invalid-Help-Page: "<prefix/> <red>Pagina de ayuda invalida: <yellow><page/></yellow>. Debe estar entre 1 y <yellow><page-count/></yellow></red>"
+    # <permission/> -> Permiso que necesita el usuario para usar el comando
+    No-Permission: "<prefix/> <red>No tienes el permiso <yellow><permission/></yellow> para usar este comando</red>"
+    # <time-left/> -> Tiempo restante para volver a usar el comando
     On-Cooldown: "<prefix/> <red>Debes esperar <yellow><time-left/></yellow> para usar este comando de nuevo</red>"
-
-invalid-url: 'Invalid URL: {0}'
-invalid-boolean: Expected true or false, but found {0}.
-invalid-quoted-string: Invalid quoted string
-invalid-command: 'Invalid command: {0}.'
-invalid-subcommand: 'Invalid subcommand: {0}.'
-invalid-help-page: 'Invalid help page: {0}. Must be between 1 and {1}.'
-no-permission: You do not have permission to execute this command.
-error-occurred: Ha ocurrido un error al ejecutar el comando.
-too-many-arguments: 'Too many arguments! Correct usage: /{0}'
-no-subcommand-specified: You must specify a subcommand!
-number-not-in-range: '{0} must be between {1} and {2} (found {3})'
-must-be-player: You must be a player to use this command!
-must-be-console: This command can only be used on console!
-invalid-player: 'Invalid player: &e{0}'
-invalid-world: 'Invalid world: &e{0}'
-invalid-selector: 'Invalid selector argument: &e{0}'
-only-one-player: Selector &e{0} &callows more than one player. Only one is allowed
-non-players-not-allowed: Non-player entities are not allowed
+    Error: "<prefix/> <red>Ha ocurrido un error al ejecutar el comando</red>"
+    # <usage/> -> Uso correcto del comando introducido por el usuario
+    Too-Many-Arguments: "<prefix/> <red>Demasiados argumentos!. Uso correcto: /<yellow><usage/></yellow></red>"
+    No-Subcommand-Specified: "<prefix/> <red>Comando incompleto. Usa <yellow>/<comando> help</yellow> para ver la ayuda</red>"
+    # <name/> -> Nombre del parámetro
+    # <minimum/> -> Numero mínimo aceptado
+    # <maximum/> -> Numero máximo aceptado
+    Number-Not-In-Range: "<prefix/> <red><yellow><name/></yellow> debe estar entre <yellow><minimum/></yellow> y <yellow><maximum/></yellow> (encontrado <yellow><input/></yellow>)</red>"
+    Must-Be-Player: "<prefix/> <red>Debes ser un jugador para usar el comando</red>"
+    Must-Be-Console: "<prefix/> <red>Solo la consola puede ejecutar el comando</red>"
+    Only-One-Player: "<prefix/> <red>El selector <yellow><input/></yellow> recoge varios jugadores. Solo se permite uno</red>"
+    Non-Players-Not-Allowed: "<prefix/> <red>No se admiten otras entidades que no sean un jugador</red>"
 
 Config-Version: 1

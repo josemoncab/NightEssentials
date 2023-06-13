@@ -103,13 +103,13 @@ public class EssentialsCommandExceptionAdapter extends BukkitExceptionAdapter {
 
     public void invalidCommand(@NotNull BukkitCommandActor actor, @NotNull InvalidCommandException exception) {
         actor.reply(Commands.INVALID_COMMAND.send(
-                AdventureUtils.tagResolver("command", exception.getInput())
+                AdventureUtils.tagResolver("input", exception.getInput())
         ));
     }
 
     public void invalidSubcommand(@NotNull BukkitCommandActor actor, @NotNull InvalidSubcommandException exception) {
         actor.reply(Commands.INVALID_SUBCOMMAND.send(
-                AdventureUtils.tagResolver("command", exception.getInput())
+                AdventureUtils.tagResolver("input", exception.getInput())
         ));
     }
 
@@ -152,25 +152,25 @@ public class EssentialsCommandExceptionAdapter extends BukkitExceptionAdapter {
 
     public void invalidPlayer(@NotNull BukkitCommandActor actor, @NotNull InvalidPlayerException exception) {
         actor.reply(Commands.INVALID_PLAYER.send(
-                AdventureUtils.tagResolver("player", exception.getInput())
+                AdventureUtils.tagResolver("input", exception.getInput())
         ));
     }
 
     public void invalidWorld(@NotNull BukkitCommandActor actor, @NotNull InvalidWorldException exception) {
         actor.reply(Commands.INVALID_WORLD.send(
-                AdventureUtils.tagResolver("world", exception.getInput())
+                AdventureUtils.tagResolver("input", exception.getInput())
         ));
     }
 
     public void malformedEntitySelector(@NotNull BukkitCommandActor actor, @NotNull MalformedEntitySelectorException exception) {
         actor.reply(Commands.INVALID_SELECTOR.send(
-                AdventureUtils.tagResolver("selector", exception.getInput())
+                AdventureUtils.tagResolver("input", exception.getInput())
         ));
     }
 
     public void moreThanOnePlayer(@NotNull BukkitCommandActor actor, @NotNull MoreThanOnePlayerException exception) {
         actor.reply(Commands.ONLY_ONE_PLAYER.send(
-                AdventureUtils.tagResolver("selector", exception.getInput())
+                AdventureUtils.tagResolver("input", exception.getInput())
         ));
     }
 
