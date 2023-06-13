@@ -14,7 +14,6 @@ public class NPlayer {
     }
 
     public void save() {
-        file.set("test", true);
         file.save();
     }
 

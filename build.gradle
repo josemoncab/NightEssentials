@@ -28,6 +28,10 @@ dependencies {
     // Lamp Command Framework
     implementation("com.github.Revxrsal.Lamp:common:${lampVersion}")
     implementation("com.github.Revxrsal.Lamp:bukkit:${lampVersion}")
+
+    // MiniMessage & Adventure
+    implementation("net.kyori:adventure-text-minimessage:${minimessageVersion}")
+    implementation("net.kyori:adventure-platform-bukkit:${adventureVersion}")
 }
 
 java {
@@ -47,10 +51,11 @@ processResources {
 }
 
 shadowJar {
-    relocate("org.spongepowered.configurate", "dev.josemc.essentials.lib.configurate")
-    relocate("com.typesafe", "dev.josemc.essentials.lib.typesafe")
-    relocate("io.leangen.geantyref", "dev.josemc.essentials.lib.geantyref")
-    relocate("revxrsal.commands", "dev.josemc.essentials.lib.commands")
+    relocate("revxrsal.commands", "dev.josemc.essentials.libs.commands")
+    relocate("org.intellij", "dev.josemc.essentials.libs.intellij")
+    relocate("org.jetbrains", "dev.josemc.essentials.libs.jetbrains")
+    relocate("dev.dejvokep.boostedyaml", "dev.josemc.essentials.libs.boostedyaml")
+    relocate("net.kyori", "dev.josemc.essentials.libs.kyori")
 }
 
 tasks.register('testJar', Copy) {

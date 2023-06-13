@@ -86,9 +86,19 @@ public class YAML {
      *
      * @return Value in the path
      * */
+    public String getString(String path) {
+        return document.getString(Route.fromString(path));
+    }
+
+    /**
+     * Get the value from the path
+     *
+     * @return Value in the path
+     * */
     public Object get(String path) {
         return document.get(Route.fromString(path));
     }
+
 
     public boolean contains(String path) {
         return document.contains(path);
