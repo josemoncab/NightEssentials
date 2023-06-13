@@ -32,6 +32,9 @@ dependencies {
     // MiniMessage & Adventure
     implementation("net.kyori:adventure-text-minimessage:${minimessageVersion}")
     implementation("net.kyori:adventure-platform-bukkit:${adventureVersion}")
+
+    // Reflections
+    implementation("org.reflections:reflections:${reflectionsVersion}")
 }
 
 java {
@@ -51,11 +54,16 @@ processResources {
 }
 
 shadowJar {
-    relocate("revxrsal.commands", "dev.josemc.essentials.libs.commands")
+    relocate("revxrsal.commands", "dev.josemc.essentials.libs.lamp")
     relocate("org.intellij", "dev.josemc.essentials.libs.intellij")
     relocate("org.jetbrains", "dev.josemc.essentials.libs.jetbrains")
     relocate("dev.dejvokep.boostedyaml", "dev.josemc.essentials.libs.boostedyaml")
     relocate("net.kyori", "dev.josemc.essentials.libs.kyori")
+    relocate("javassist", "dev.josemc.essentials.libs.javassist")
+    relocate("javax", "dev.josemc.essentials.libs.javax")
+    relocate("org.reflections", "dev.josemc.essentials.libs.reflections")
+    relocate("org.slf4j", "dev.josemc.essentials.libs.slf4j")
+
 }
 
 tasks.register('testJar', Copy) {

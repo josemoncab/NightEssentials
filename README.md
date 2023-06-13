@@ -5,3 +5,4 @@
 - [Boosted YAML](https://github.com/dejvokep/boosted-yaml)
 - [Adventure](https://docs.advntr.dev/index.html)
 - [MiniMessage](https://docs.advntr.dev/minimessage/index.html)
+- [Reflections](https://github.com/ronmamo/reflections)

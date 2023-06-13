@@ -7,6 +7,10 @@ import revxrsal.commands.bukkit.BukkitCommandActor;
 import revxrsal.commands.command.CommandActor;
 import revxrsal.commands.help.CommandHelp;
 
+
+/**
+ * Developer command used to test features
+ * */
 @Command("test")
 public class TestCommand extends EssentialsCommand {
 

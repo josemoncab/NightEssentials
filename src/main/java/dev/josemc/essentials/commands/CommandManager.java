@@ -1,9 +1,13 @@
 package dev.josemc.essentials.commands;
 
 import dev.josemc.essentials.Essentials;
-import dev.josemc.essentials.commands.impl.TestCommand;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
 import revxrsal.commands.bukkit.BukkitCommandHandler;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Set;
 
 public class CommandManager {
     private final BukkitCommandHandler commandHandler;
@@ -17,7 +21,17 @@ public class CommandManager {
     }
 
     private void registerCommands() {
-        // TODO: Use reflections
-        commandHandler.register(new TestCommand());
+        Reflections reflections = new Reflections("dev.josemc.essentials.commands.impl", Scanners.SubTypes);
+
+        Set<Class<? extends EssentialsCommand>> classes = reflections.getSubTypesOf(EssentialsCommand.class);
+
+        classes.forEach(c -> {
+            try {
+                commandHandler.register(c.getDeclaredConstructor().newInstance());
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                     NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
