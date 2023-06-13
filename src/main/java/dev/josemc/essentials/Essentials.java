@@ -1,17 +1,14 @@
 package dev.josemc.essentials;
 
 import dev.josemc.essentials.commands.TestCommand;
-import dev.josemc.essentials.commands.YAMLLocaleProvider;
 import dev.josemc.essentials.data.DataManager;
 import dev.josemc.essentials.files.ConfigurationManager;
-import dev.josemc.essentials.files.YAML;
 import dev.josemc.essentials.listeners.JoinListener;
 import dev.josemc.essentials.listeners.LeaveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import revxrsal.commands.bukkit.BukkitCommandHandler;
 
-import java.util.Locale;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -64,7 +61,7 @@ public class Essentials extends JavaPlugin {
         commandHandler.enableAdventure();
         commandHandler.register(new TestCommand());
         commandHandler.registerBrigadier();
-        commandHandler.getTranslator().add(new YAMLLocaleProvider(, Locale.forLanguageTag("es_es")));
+        //commandHandler.getTranslator().add(new YAMLLocaleProvider(, Locale.forLanguageTag("es_es")));
     }
 
     /**

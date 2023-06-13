@@ -60,17 +60,15 @@ public class YAML {
      * @param autoUpdate Should the file auto update with new default values
      * */
     private YAML(Path path, String internal, boolean autoUpdate) {
-        Essentials.get().executor.execute(() -> {
-            try {
-                if (internal != null) {
-                    document = YamlDocument.create(new File(path.toUri()), YAML.class.getResourceAsStream("/" + internal), generalSettings, LoaderSettings.builder().setAutoUpdate(autoUpdate).build(), DumperSettings.DEFAULT, updaterSettings);
-                } else {
-                    document = YamlDocument.create(new File(path.toUri()), generalSettings, LoaderSettings.builder().setAutoUpdate(autoUpdate).build(), DumperSettings.DEFAULT, updaterSettings);
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try {
+            if (internal != null) {
+                document = YamlDocument.create(new File(path.toUri()), YAML.class.getResourceAsStream("/" + internal), generalSettings, LoaderSettings.builder().setAutoUpdate(autoUpdate).build(), DumperSettings.DEFAULT, updaterSettings);
+            } else {
+                document = YamlDocument.create(new File(path.toUri()), generalSettings, LoaderSettings.builder().setAutoUpdate(autoUpdate).build(), DumperSettings.DEFAULT, updaterSettings);
             }
-        });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
