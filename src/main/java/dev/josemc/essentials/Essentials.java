@@ -1,10 +1,13 @@
 package dev.josemc.essentials;
 
+import dev.josemc.essentials.commands.TestCommand;
 import dev.josemc.essentials.data.DataManager;
 import dev.josemc.essentials.files.ConfigurationManager;
 import dev.josemc.essentials.listeners.JoinListener;
+import dev.josemc.essentials.listeners.LeaveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import revxrsal.commands.bukkit.BukkitCommandHandler;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -39,6 +42,7 @@ public class Essentials extends JavaPlugin {
         configurationsManager = new ConfigurationManager();
         dataManager = new DataManager();
 
+        registerCommands();
         registerEvents();
     }
 
@@ -49,6 +53,12 @@ public class Essentials extends JavaPlugin {
 
     private void registerEvents() {
         Bukkit.getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new LeaveListener(), this);
+    }
+
+    private void registerCommands() {
+        BukkitCommandHandler commandHandler = BukkitCommandHandler.create(this);
+        commandHandler.register(new TestCommand());
     }
 
     /**

@@ -53,7 +53,9 @@ shadowJar {
     relocate("revxrsal.commands", "dev.josemc.essentials.lib.commands")
 }
 
-task testJar(type: Copy) {
+tasks.register('testJar', Copy) {
+    group = "test"
+    description = "Create a jar with all dependencies and move into a TestServer"
     dependsOn(':clean')
     from shadowJar
     into(project.file("./TestServer/plugins"))

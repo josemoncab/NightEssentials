@@ -27,9 +27,20 @@ public class DataManager {
     }
 
     /**
+     * Get the {@link NPlayer} from the cache
+     *
+     * @param uuid The uuid of the player to search
+     * @return The player data
+     * */
+    public NPlayer getPlayer(UUID uuid) {
+        return playersCache.get(uuid);
+    }
+
+    /**
      * Remove a player from the cache when the player goes offline
      * */
     public void removePlayer(UUID uuid) {
+        playersCache.get(uuid).save();
         playersCache.remove(uuid);
     }
 

@@ -12,4 +12,13 @@ public class NPlayer {
     public NPlayer(Player player) {
         file = new YAML(Path.of(References.PLAYERDATA_FOLDER.toString(), player.getUniqueId() + ".yml"));
     }
+
+    public void save() {
+        file.set("test", true);
+        file.save();
+    }
+
+    public void set(String path, Object data) {
+        file.set(path, data);
+    }
 }

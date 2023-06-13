@@ -26,7 +26,7 @@ public class YAML {
     /**
      * Default settings used for the YAMLDocument creator
      * */
-    private final GeneralSettings generalSettings = GeneralSettings.builder().setKeyFormat(GeneralSettings.KeyFormat.OBJECT).setUseDefaults(true).build();
+    private final GeneralSettings generalSettings = GeneralSettings.builder().setKeyFormat(GeneralSettings.KeyFormat.STRING).setUseDefaults(true).build();
 
     /**
      * Default settings used for the YAMLDocument creator
@@ -71,6 +71,16 @@ public class YAML {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    /**
+     * Add content to the file
+     *
+     * @param path The path in the yaml file
+     * @param data The data to save
+     * */
+    public void set(String path, Object data) {
+        document.set(path, data);
     }
 
     /**

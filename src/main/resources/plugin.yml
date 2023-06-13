@@ -1,6 +1,6 @@
-name: Essentials
+name: NightEssentials
 version: @version@
 main: dev.josemc.essentials.Essentials
 description: All features for Pixuland
 author: josemc
-api-version: 1.19
+api-version: 1.20
