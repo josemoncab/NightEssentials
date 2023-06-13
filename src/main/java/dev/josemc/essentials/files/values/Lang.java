@@ -5,6 +5,9 @@ import dev.josemc.essentials.utils.AdventureUtils;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 
+/**
+ * All messages translatable in the plugin
+ * */
 public enum Lang {
     PREFIX("Prefix"),
 

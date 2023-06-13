@@ -9,18 +9,47 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class with methods for simplify working with MiniMessage
+ * */
 public class AdventureUtils {
 
-    public static final TagResolver essentialsTagResolver = TagResolver.resolver(TagResolver.standard());
-    public static final MiniMessage MINI_MESSAGE = MiniMessage.builder().tags(essentialsTagResolver).build();
+    /**
+     * Utility class
+     * */
+    private AdventureUtils() {
+        throw new UnsupportedOperationException("Utility Class");
+    }
 
-    public static ComponentLike parse(String message, TagResolver ...resolver) {
-        ArrayList<TagResolver> tagResolvers = new ArrayList<>(List.of(resolver));
+    /**
+     * MiniMessage instance used in the plugin
+     * */
+    public static final MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
+
+    /**
+     * Parse a string message into Components with custom tag resolvers
+     *
+     * @param message String to convert
+     * @param resolvers List of {@link TagResolver} used by custom variables
+     *
+     * @return Component ready to get send by Adventure
+     * */
+    public static ComponentLike parse(String message, TagResolver ...resolvers) {
+        ArrayList<TagResolver> tagResolvers = new ArrayList<>(List.of(resolvers));
+        tagResolvers.add(TagResolver.standard());
         tagResolvers.add(AdventureUtils.tagResolver("prefix", Lang.PREFIX.get()));
         return MINI_MESSAGE.deserialize(message, TagResolver.resolver(tagResolvers));
     }
 
-    public static TagResolver tagResolver(String string, String tag) {
-        return TagResolver.resolver(string, Tag.selfClosingInserting(AdventureUtils.MINI_MESSAGE.deserialize(tag)));
+    /**
+     * Create a self-closing {@link TagResolver}
+     *
+     * @param tag String used to represent the tag "<example/>"
+     * @param msg String used to replace the value
+     *
+     * @return {@link TagResolver}
+     * */
+    public static TagResolver tagResolver(String tag, String msg) {
+        return TagResolver.resolver(tag, Tag.selfClosingInserting(AdventureUtils.MINI_MESSAGE.deserialize(msg)));
     }
 }

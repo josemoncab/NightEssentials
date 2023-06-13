@@ -9,6 +9,9 @@ import revxrsal.commands.bukkit.BukkitCommandHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
+/**
+ * Class used to register all commands and set up the command framework
+ * */
 public class CommandManager {
     private final BukkitCommandHandler commandHandler;
 

@@ -2,6 +2,7 @@ package dev.josemc.essentials.commands.impl;
 
 import dev.josemc.essentials.Essentials;
 import dev.josemc.essentials.commands.EssentialsCommand;
+import dev.josemc.essentials.utils.AdventureUtils;
 import revxrsal.commands.annotation.*;
 import revxrsal.commands.bukkit.BukkitCommandActor;
 import revxrsal.commands.command.CommandActor;
@@ -16,7 +17,7 @@ public class TestCommand extends EssentialsCommand {
 
     @DefaultFor("test")
     public void test(BukkitCommandActor sender) {
-        sender.reply(parse("<yellow>data: Pruebas sobre los datos del jugador</yellow>"));
+        sender.reply(AdventureUtils.parse("<yellow>data: Pruebas sobre los datos del jugador</yellow>"));
     }
 
     @Subcommand("data")

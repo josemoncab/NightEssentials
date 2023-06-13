@@ -33,9 +33,9 @@ import revxrsal.commands.command.ExecutableCommand;
 import revxrsal.commands.exception.*;
 
 /**
+ * Exception handler to errors occur when a command runs
  * Changed all messages to support Adventure Components and custom messages keys
  * */
-
 public class EssentialsCommandExceptionAdapter extends BukkitExceptionAdapter {
 
     public static final EssentialsCommandExceptionAdapter INSTANCE = new EssentialsCommandExceptionAdapter();

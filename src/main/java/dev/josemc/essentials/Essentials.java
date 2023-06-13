@@ -8,9 +8,6 @@ import dev.josemc.essentials.listeners.LeaveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 public class Essentials extends JavaPlugin {
 
     /**
@@ -19,7 +16,7 @@ public class Essentials extends JavaPlugin {
     private static Essentials instance;
 
     /**
-     * Instance of ConfigurationsManager
+     * Instance of ConfigurationManager
      * */
     private static ConfigurationManager configurationsManager;
 
@@ -28,20 +25,14 @@ public class Essentials extends JavaPlugin {
      * */
     private static DataManager dataManager;
 
-    /**
-     * Queue used to execute heavy task like file handling
-     * */
-    public Executor executor;
-
     @Override
     public void onEnable() {
         instance = this;
-        executor = Executors.newSingleThreadExecutor();
 
         configurationsManager = new ConfigurationManager();
         dataManager = new DataManager();
 
-        CommandManager commandManager = new CommandManager();
+        new CommandManager();
 
         registerEvents();
     }
@@ -51,6 +42,10 @@ public class Essentials extends JavaPlugin {
         dm().clearCache();
     }
 
+    /**
+     * Method used for register all event listeners
+     * Probably substituted for an EventManager and Reflections
+     * */
     private void registerEvents() {
         Bukkit.getServer().getPluginManager().registerEvents(new JoinListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new LeaveListener(), this);
