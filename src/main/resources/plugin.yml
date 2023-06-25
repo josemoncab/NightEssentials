@@ -4,3 +4,5 @@ main: dev.josemc.essentials.Essentials
 description: All features for Pixuland
 author: josemc
 api-version: 1.19
+libraries:
+    - 'org.reflections:reflections:@reflectionsVersion@'

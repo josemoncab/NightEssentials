@@ -34,7 +34,7 @@ dependencies {
     implementation("net.kyori:adventure-platform-bukkit:${adventureVersion}")
 
     // Reflections
-    implementation("org.reflections:reflections:${reflectionsVersion}")
+    compileOnly("org.reflections:reflections:${reflectionsVersion}")
 }
 
 java {
@@ -49,7 +49,7 @@ compileJava {
 processResources {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
     from(sourceSets.main.resources.srcDirs) {
-        filter ReplaceTokens, tokens: [version: pluginVersion]
+        filter ReplaceTokens, tokens: [version: pluginVersion, reflectionsVersion: reflectionsVersion]
     }
 }
 
@@ -59,10 +59,6 @@ shadowJar {
     relocate("org.jetbrains", "dev.josemc.essentials.libs.jetbrains")
     relocate("dev.dejvokep.boostedyaml", "dev.josemc.essentials.libs.boostedyaml")
     relocate("net.kyori", "dev.josemc.essentials.libs.kyori")
-    relocate("javassist", "dev.josemc.essentials.libs.javassist")
-    relocate("javax", "dev.josemc.essentials.libs.javax")
-    relocate("org.reflections", "dev.josemc.essentials.libs.reflections")
-    relocate("org.slf4j", "dev.josemc.essentials.libs.slf4j")
 
 }
 
